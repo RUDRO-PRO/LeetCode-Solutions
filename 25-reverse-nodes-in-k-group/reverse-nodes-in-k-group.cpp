@@ -24,11 +24,9 @@ public:
         // Create a dummy node to handle head pointer changes cleanly
         ListNode dummy(0, head);
         ListNode* prevGroupEnd = &dummy;
-
         while (length >= k) {
             ListNode* groupStart = prevGroupEnd->next;
-            ListNode* nextGroupStart = groupStart;
-            
+            ListNode* nextGroupStart = groupStart;          
             // Move nextGroupStart to the start of the following group
             for (int i = 0; i < k; i++) {
                 nextGroupStart = nextGroupStart->next;
@@ -38,22 +36,18 @@ public:
             ListNode* prev = nextGroupStart;
             ListNode* current = groupStart;
             ListNode* next = nullptr;
-
             for (int i = 0; i < k; i++) {
                 next = current->next;
                 current->next = prev;
                 prev = current;
                 current = next;
-            }
-
+                        }
             // Connect the reversed group back to the main list
             prevGroupEnd->next = prev;
-            prevGroupEnd = groupStart;
-            
+            prevGroupEnd = groupStart;   
             // Decrease the remaining length count by k
             length -= k;
         }
-
         return dummy.next;
     }
 };
