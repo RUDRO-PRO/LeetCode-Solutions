@@ -4,7 +4,6 @@ class Solution {
 public:
     bool isValidSudoku(std::vector<std::vector<char>>& board) {
         // Track numbers 1-9 for each row, column, and 3x3 box
-        // Index 0 is unused, indices 1-9 correspond to the digits '1' through '9'
         int row[9][10] = {0};
         int col[9][10] = {0};
         int box[9][10] = {0};
